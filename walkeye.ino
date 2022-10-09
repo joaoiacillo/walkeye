@@ -5,15 +5,13 @@
  * @version 1.0.0
  */
 
-
 ////////////////////////////////////////////////////////
-// WalkEYE
+// Biblioteca WalkEYE
 ////////////////////////////////////////////////////////
 
-namespace WalkEYE
-{
-    
-}
+#include "we_serial.h"
+#include "we_runtime.h"
+#include "we_actions.h"
 
 
 ////////////////////////////////////////////////////////
@@ -22,11 +20,12 @@ namespace WalkEYE
 
 void setup()
 {
-    
+    WE_Serial::setup();
+    WE_Actions::setup();
 }
 
 void loop()
 {
-    
+    if (!WE_Runtime::running) return;
 }
 
