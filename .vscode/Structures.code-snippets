@@ -52,5 +52,19 @@
 	"Create pin const": {
 		"prefix": "pin",
 		"body": "const uint8_t pin_${1:name} = $0;"
+	},
+
+	"Header file": {
+		"prefix": "header",
+		"body": [
+			"#ifndef $1",
+			"#define $1",
+			"",
+			"#include \"Arduino.h\"",
+			"",
+			"$0",
+			"",
+			"#endif"
+		]
 	}
 }
