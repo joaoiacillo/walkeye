@@ -161,18 +161,7 @@ namespace WalkEYE { /* ... */ }
 
 #### 2. Quantidade em um arquivo
 
-Namespaces devem estar presentes em seus próprios arquivos para fácil
-identificação.
-
-```
-WalkEYE/
-|    walkeye.ino
-└─── include/
-     |    we_actions.cpp      # Contêm a namespace WE_Actions.
-     |    we_serial.cpp       # Contêm a namespace WE_Serial.
-     |    we_connection.cpp   # Contêm a namespace WE_Connection.
-     |    ...
-```
+Um arquivo _header_ e _source_ não devem controlar mais do que **uma** namespace.
 
 ### Documentação de Funções
 
