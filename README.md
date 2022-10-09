@@ -1,25 +1,34 @@
 # 👨‍🦯 WalkEYE - Projeto Final FAETEC
-Esse repositório contêm o código fonte para Arduino do projeto WalkEYE
-
-O projeto WalkEYE visa facilitar a locomoção de deficientes visuais. 
-
-**Esse repositório contêm o código para o Arduino incluído na bengala.**
-O código do aplicativo de celular, que usa a tecnologia Flutter, pode
-ser encontrado [aqui](https://github.com/Projeto-WalkEYE/walkeye-app).
+Esse repositório contêm o código fonte para Arduino do projeto
+WalkEYE, um projeto de finalização de curso. Os códigos do aplicativo
+para Android usando Flutter podem ser encontrados
+[aqui](https://github.com/Projeto-WalkEYE/walkeye-app).
 
 
 ## Manual
-Você pode acessar o manual de utilização aqui: _Em construção._
+Existem dois tipos de manual os quais você pode baixar na tabela
+abaixo. O manual de utilização aborda as principais funcionalidades
+do dispositivo e como configurá-lo. O manual de replicação é um
+documento técnico contendo todas as especificações de como recriar
+o mesmo projeto.
 
-Caso esteja interessado no manual de replicação do projeto, voccê pode acessá-lo aqui: _Em construção._
+ **Manual** | **Download** 
+------------|--------------
+ Utilização | Indisponível 
+ Replicação | Indisponível 
+
+
+
+
 
 
 ## Atalhos de Código
-Essa seção guarda os atalhos definidos para o VS Code e o editor web do GitHub para um rápido desenvolvimento.
+Essa seção guarda os atalhos definidos para o VS Code e o editor web
+do GitHub.
 
 ### Documentação
 
-- `doc` → Criação de uma documentação geral de estrutura
+#### Comentário de múltiplas linhas (`doc`)
 
 ```cpp
 /**
@@ -27,7 +36,7 @@ Essa seção guarda os atalhos definidos para o VS Code e o editor web do GitHub
  */
 ```
 
-- `fdoc` → Criação de uma documentação de arquivo
+#### Documentação de um arquivo (`fdoc`)
 
 ```cpp
 /**
@@ -38,29 +47,29 @@ Essa seção guarda os atalhos definidos para o VS Code e o editor web do GitHub
  */
 ```
 
-- `head` → Criação de um cabeçalho para organização
+#### Cabeçalho de Seção (`head`)
 
 ```cpp
 ////////////////////////////////////////////////////////
-// Título
+// 
 ////////////////////////////////////////////////////////
 ```
 
 ### Estruturas
 
-- `var` → Criação de variável
+#### Variável (`var`)
 
 ```cpp
 int name = 0;
 ```
 
-- `pin` → Criação de constante de pino
+#### Constante de pino (`pin`)
 
 ```cpp
 const uint8_t name = 0;
 ```
 
-- `func` → Criação de uma função
+#### Função (`func`)
 
 ```cpp
 void name()
@@ -69,21 +78,21 @@ void name()
 }
 ```
 
-- `nmsp` → Criação de uma namespace
-
-```cpp
-namespace name
-{
-    
-}
-```
-
-- `pnmsp` → Criação de uma namespace prefixada
+#### Namespace WalkEYE (`pnmsp`)
 
 ```cpp
 namespace WE_name
 {
 
+}
+```
+
+#### Namespace (`nmsp`)
+
+```cpp
+namespace name
+{
+    
 }
 ```
 
@@ -93,20 +102,27 @@ Estilo de Código
 
 ### Arquivos
 
-Arquivos pertencentes a biblioteca do WalkEYE deverão começar com o prefixo `we_` para fácil identificação.
+Os arquivos que pertecem a biblioteca padrão do WalkEYE devem ter
+seus nomes prefixados por "*we_*" para fácil identificação.
 
-Apenas o arquivo principal `walkeye.ino` nao precisa seguir essa regra.
+O arquivo principal do projeto (`walkeye.ino`) não precisa estar com
+seu nome prefixado.
 
 ```bash
-touch walkeye.ino # Arquivo principal
-touch we_actions.ino # Parte da biblioteca
+# Arquivo principal
+touch walkeye.ino
 
-touch random.ino # Código externo incluído no projeto
+# Arquivo da biblioteca padrão
+touch ./include/we_serial.cpp
+
+# Arquivo externo à biblioteca
+touch ./include/random.cpp
 ```
 
 ### Escopos
 
-Blocos de escopo devem ter as chaves em novas linhas. Não do lado de sua declaração:
+As chaves que cercam as instruções de um escopo devem estar presentes
+em linhas vazias, e não do lado da declaração do escopo.
 
 ```cpp
 void setup()
@@ -114,7 +130,7 @@ void setup()
     /* ... */
 }
 
-if (/* condição */)
+if (x >= 10)
 {
     /* ... */
 }
@@ -127,9 +143,13 @@ for (int i = 0; i < 10; i++)
 
 ### Namespaces
 
-Namespaces devem ter seu identificador iniciado pelo prefixo `WE_`. O resto do identificador deverá utilizar o estilo `PascalCase`.
+#### 1. Estilo de Escrita
 
-Para reter o estilo do nome do projeto, a namespace `WalkEYE` é a única que pode ir contra essas regras.
+Namespaces devem ter seu nome escritos no estilo _PascalCase_,
+prefixados por `WE_`.
+
+Para reter o estilo do nome do projeto, a namespace `WalkEYE` é a
+única que pode ir contra essas regras.
 
 ```cpp
 namespace WE_Sensor { /* ... */ }
@@ -139,31 +159,47 @@ namespace WE_Connection { /* ... */ }
 namespace WalkEYE { /* ... */ }
 ```
 
-### Descrição de Funções
+#### 2. Quantidade em um arquivo
 
-Descrições simples de funções devem ser iniciados com `///` para não sujar o código.
+Namespaces devem estar presentes em seus próprios arquivos para fácil
+identificação.
 
-Descrições que necessitam múltiplas linhas devem estar encapsuladas dentro de `/** */`.
-Parágrafos devem ser separados por linhas vazias para aumentar a legibilidade.
+```
+WalkEYE/
+|    walkeye.ino
+└─── include/
+     |    we_actions.cpp      # Contêm a namespace WE_Actions.
+     |    we_serial.cpp       # Contêm a namespace WE_Serial.
+     |    we_connection.cpp   # Contêm a namespace WE_Connection.
+     |    ...
+```
+
+### Documentação de Funções
+
+Documentações simples de funções devem usar `///`.
+
+Documentações complexas devem usar `/** */`, com cada nova
+linha começando com `*`. Parágrafos devem ser separados por linhas
+vazias para aumentar a legibilidade.
 
 ```cpp
-/// Faz uma tarefa simples.
-void mySimpleFunction() { /* ... */ }
+/// Soma a com b
+void add(int a, int b) { /* ... */ }
 
 /**
- * Faz uma tarefa complexa.
+ * Tenta uma conexão USB entre o Arduino e o dispositivo.
  *
  * Explicação, explicação, explicação...
  *
  * @version 1.0.0
  * @deprecated
  */
-void myComplexFunction() { /* ... */ }
+void tryConnection() { /* ... */ }
 ```
 
 ### Pinos
 
-Identificadores para pinos do Arduino precisam começar com o prefixo `pin_`. O resto do identificador deverá utilizar o estilo `camelCase`.
+Identificadores para pinos do Arduino devem ser escritos com o estilo _camelCase_, prefixados por `pin_`.
 
 O tipo de dado padrão para esse tipo de informação deverá ser `uint8_t`, que é equivalente ao `byte` do Arduino.
 
