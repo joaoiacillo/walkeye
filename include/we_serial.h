@@ -1,3 +1,10 @@
+/**
+ * Cabeçalho da namespace WE_Serial.
+ *
+ * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
+ * @version 1.0.0
+ */
+
 #ifndef WE_SERIAL_H
 #define WE_SERIAL_H
 

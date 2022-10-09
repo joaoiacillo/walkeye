@@ -1,3 +1,10 @@
+/**
+ * Controla a comunicação Serial do Arduino.
+ *
+ * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
+ * @version 1.0.0
+ */
+
 #include "Arduino.h"
 #include "we_serial.h"
 

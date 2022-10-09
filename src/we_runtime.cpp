@@ -1,3 +1,10 @@
+/**
+ * Controla o estado de execução do sistema.
+ *
+ * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
+ * @version 1.0.0
+ */
+
 #include "we_runtime.h"
 #include "we_serial.h"
 #include "Arduino.h"
