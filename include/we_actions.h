@@ -1,3 +1,10 @@
+/**
+ * Cabeçalho da namespace WE_Actions.
+ *
+ * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
+ * @version 1.0.0
+ */
+
 #ifndef WE_ACTIONS_H
 #define WE_ACTIONS_H
 
