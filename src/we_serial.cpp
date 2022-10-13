@@ -6,7 +6,7 @@
  */
 
 #include "Arduino.h"
-#include "we_serial.h"
+#include "../include/we_serial.h"
 
 
 ////////////////////////////////////////////////////////

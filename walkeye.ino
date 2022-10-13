@@ -9,10 +9,9 @@
 // Biblioteca WalkEYE
 ////////////////////////////////////////////////////////
 
-#include "we_serial.h"
-#include "we_runtime.h"
-#include "we_actions.h"
-
+#include "include/we_serial.h"
+#include "include/we_runtime.h"
+#include "include/we_actions.h"
 
 ////////////////////////////////////////////////////////
 // Arduino

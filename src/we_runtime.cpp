@@ -5,9 +5,9 @@
  * @version 1.0.0
  */
 
-#include "we_runtime.h"
-#include "we_serial.h"
 #include "Arduino.h"
+#include "../include/we_runtime.h"
+#include "../include/we_serial.h"
 
 
 ////////////////////////////////////////////////////////

@@ -1,6 +1,14 @@
-#include "we_actions.h"
-#include "we_serial.h"
+/**
+ * Controla os botões de power e assistente.
+ *
+ * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
+ * @version 1.0.0
+ */
+
 #include "Arduino.h"
+#include "../include/we_actions.h"
+#include "../include/we_runtime.h"
+#include "../include/we_serial.h"
 
 ////////////////////////////////////////////////////////
 // Pinos
@@ -41,7 +49,15 @@ void WE_Actions::setup()
 /// Quando o botão de power for pressionado.
 void WE_Actions::powerBtnPressed()
 {
-
+    switch (WE_Runtime::running)
+    {
+        case true:
+            WE_Runtime::stop();
+            break;
+        case false:
+            WE_Runtime::start();
+            break;
+    }
 }
 
 /// Quando o botão da assistente for pressionado.
