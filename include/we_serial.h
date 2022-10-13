@@ -16,7 +16,7 @@ namespace WE_Serial
 
     extern const long baudRate;
 
-    void begin();
+    void setup();
 
     void set(String);
     void clear();
