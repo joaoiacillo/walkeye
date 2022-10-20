@@ -2,7 +2,6 @@
  * Cabeçalho da namespace WE_Serial.
  *
  * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
- * @version 1.0.0
  */
 
 #ifndef WE_SERIAL_H
@@ -10,20 +9,20 @@
 
 #include "Arduino.h"
 
-namespace WE_Serial
-{
-    extern String message;
+////////////////////////////////////////////////////////
+// Setup
+////////////////////////////////////////////////////////
 
-    extern const long baudRate;
+void setupSerial(long);
 
-    void setup();
+////////////////////////////////////////////////////////
+// Funções
+////////////////////////////////////////////////////////
 
-    void set(String);
-    void clear();
-    void add(String);
+void print(String);
+void print(String, String);
 
-    void send();
-    void quickSend(String);
-}
+void print(String[]);
+void print(String[], String);
 
 #endif

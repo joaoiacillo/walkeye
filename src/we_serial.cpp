@@ -2,64 +2,44 @@
  * Controla a comunicação Serial do Arduino.
  *
  * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
- * @version 1.0.0
  */
 
-#include "Arduino.h"
 #include "../include/we_serial.h"
-
-
-////////////////////////////////////////////////////////
-// Variáveis
-////////////////////////////////////////////////////////
-
-/// Mensagem a ser enviada.
-String WE_Serial::message = "";
-
-/// Taxa de velocidade de informação.
-const long WE_Serial::baudRate = 9600;
-
+#include "Arduino.h"
 
 ////////////////////////////////////////////////////////
-// Configurações
+// Setup
 ////////////////////////////////////////////////////////
 
-void WE_Serial::setup()
+void setupSerial(long baudRate)
 {
-    Serial.begin(WE_Serial::baudRate);
+    Serial.begin(baudRate);
 }
 
 ////////////////////////////////////////////////////////
-// Mensagem
+// Print
 ////////////////////////////////////////////////////////
 
-/// Define o conteúdo da mensagem.
-void WE_Serial::set(String msg)
-{
-    WE_Serial::message = msg;
-}
-
-/// Limpa o conteúdo da mensagem.
-void WE_Serial::clear()
-{
-    WE_Serial::message = "";
-}
-
-/// Adiciona um texto à mensagem.
-void WE_Serial::add(String text)
-{
-    WE_Serial::message += text;
-}
-
-/// Envia a mensagem e limpa seu conteúdo da memória.
-void WE_Serial::send()
-{
-    Serial.println(WE_Serial::message);
-    WE_Serial::clear();
-}
-
-/// Envia uma mensagem rápida para o Serial.
-void WE_Serial::quickSend(String msg)
+void print(String msg)
 {
     Serial.println(msg);
+}
+
+void print(String msg, String end)
+{
+    Serial.print(msg + end);
+}
+
+void print(String msgs[])
+{
+    String msg = "";
+    for (String part : msgs) msg += part;
+    Serial.println(msg);
+}
+
+void print(String msgs[], String end)
+{
+    String msg = "";
+    for (String part : msgs) msg += part;
+    Serial.print(msg + end);
 }
