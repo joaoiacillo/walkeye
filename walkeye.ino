@@ -1,30 +1,55 @@
-/**
- * Ponto de partida de todo o projeto WalkEYE para Arduino.
- *
- * @author João Pedro Iacillo Soares <joaopiacillo@outlook.com.br>
- * @version 1.0.0
- */
+const byte trigPin = 8;
+const byte echoPin = 7;
+const byte piezoPin = 5;
 
-////////////////////////////////////////////////////////
-// Biblioteca WalkEYE
-////////////////////////////////////////////////////////
+unsigned long distance;
+float distanceFixPercent = 3.18;
 
-#include "include/we_serial.h"
-#include "include/we_runtime.h"
-#include "include/we_actions.h"
+unsigned long maxDistance = 200; // 200cm
+unsigned long minDistance = 0; // 0cm
 
-////////////////////////////////////////////////////////
-// Arduino
-////////////////////////////////////////////////////////
+short freq;
+const short minFreq = 200;
+const short maxFreq = 1000;
 
 void setup()
 {
-    WE_Serial::setup();
-    WE_Actions::setup();
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(piezoPin, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Sensor inicializado.");
+}
+
+void pulseTrigger()
+{
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+}
+
+void getDistance()
+{
+  pulseTrigger();
+  distance = 0.034 * pulseIn(echoPin, HIGH) / 2.0;
+  distance = distance + (distanceFixPercent / 100.0) * distance;
+  
+  Serial.print("Distancia: ");
+  Serial.println(distance);
 }
 
 void loop()
 {
-    if (!WE_Runtime::running) return;
+  getDistance();
+  
+  if (distance < maxDistance)
+  {
+    digitalWrite(piezoPin, LOW);
+    Serial.print("Frequencia: ");
+    Serial.println(freq);
+  }
+  else
+  {
+    digitalWrite(piezoPin, HIGH);
+  }
 }
-
